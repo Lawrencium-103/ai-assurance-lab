@@ -51,3 +51,36 @@ huggingface-cli login        # read token from huggingface.co/settings/tokens
 
 python labs/lab1_model_cards.py
 python labs/lab2_lineage.py
+
+
+
+labs/
+lab1_model_cards.py read card metadata, keyword-check key sections
+lab2_lineage.py trace base_model chain, compare with card text
+lab3_openness.py grade releases from yes/no evidence
+lab4_aibom.py write and validate a CycloneDX ML-BOM; verify a SHA-256
+lab5_pii_scan.py detect and redact personal data in synthetic records
+results/
+lab1_model_cards.md
+lab2_lineage.md
+lab3_openness.md
+lab4_aibom.md
+lab5_pii_scan.md
+ai-bom.json
+
+
+## Limitations
+
+- Model cards are edited over time. Results are dated and may not reproduce exactly.
+- The section checks in Lab 1 are keyword matches. They show whether a topic is mentioned, not whether it is covered properly.
+- The Lab 3 grades are only as good as their yes/no inputs, which are still being checked against sources.
+- The Lab 5 test uses three records, and the Pidgin evaluation uses ten prompts and one reviewer. They show that failures happen, not how often.
+- Nothing here is legal advice. Where a licence question comes up, it is recorded as an open question.
+
+## References
+
+Anyanwu, P. C. et al. (2026). Red-Teaming Large Language Models in Low-Resource African Languages: A Case Study of Yoruba and Nigerian Pidgin. arXiv:2610.39590.
+
+## Data
+
+These labs use public model cards and synthetic records only. No real personal data is used anywhere in this repository.
