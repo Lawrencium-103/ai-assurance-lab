@@ -20,13 +20,13 @@ I'm working through these labs to build practical skills in AI procurement and d
 
 **1. Model metadata can say a model has no ancestors while its own documentation says otherwise.**
 
-DeepSeek-R1-Distill-Llama-8B declares an MIT licence in its Hugging Face metadata and lists no base model. Its model card text states that it is derived from Llama 3.1-8B-Base and originally licensed under the Llama 3.1 licence. An automated licence check reading only the metadata finds no conflict. By contrast, a quantized copy of Llama 3.1 declares its full chain back to Meta's base model.
+DeepSeek-R1-Distill-Llama-8B declares an MIT licence in its Hugging Face metadata and lists no base model. Its model card text states that it is derived from Llama 3.1-8B-Base and originally licensed under the Llama 3.1 licence. An automated licence check reading only the metadata finds no conflict. By contrast, `bartowski/Meta-Llama-3.1-8B-Instruct-GGUF`, a quantized copy of Llama 3.1, declares its full chain back to Meta's base model with the same licence at every step.
 
 For procurement, metadata is not enough. A buyer should require a machine-readable bill of materials that declares every ancestor model, and check it against the model card. See [results/lab2_lineage.md](results/lab2_lineage.md).
 
-**2. An open-source PII scanner missed a Nigerian name and a street address.**
+**2. In a three-record test, an open-source PII scanner missed a Nigerian name and a street address.**
 
-Presidio with the small English spaCy model redacted a NIN, a phone number, an email and the name "Mrs Chioma Eze", but let "Adebayo Okafor" and "14 Allen Avenue" through unchanged. Out-of-the-box tools should not be the only safeguard before citizen data is sent to an AI vendor. See [results/lab5_pii_scan.md](results/lab5_pii_scan.md).
+Presidio with the small English spaCy model redacted a NIN, a phone number, an email and the name "Mrs Chioma Eze", but let "Adebayo Okafor" and "14 Allen Avenue" through unchanged. Three records show that misses happen, not how often; a larger test with Nigerian names is the next step. Out-of-the-box tools should not be the only safeguard before citizen data is sent to an AI vendor. See [results/lab5_pii_scan.md](results/lab5_pii_scan.md).
 
 **3. A procurement-style ML-BOM can be written and validated with free tools.**
 
