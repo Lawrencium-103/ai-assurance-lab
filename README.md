@@ -41,46 +41,32 @@ In a 10-prompt Nigerian Pidgin evaluation of Qwen2.5-1.5B-Instruct ([dataset on 
 This matches Anyanwu et al. (2026), who found that apparent safety in Yoruba and Nigerian Pidgin often reflects poor comprehension rather than real safety. For procurement, a vendor's automated score in a Nigerian language is not evidence that the model understands it. Native-speaker review should be a required check before an AI tool serves Nigerian users.
 
 ## Run it
-
 Python 3.10+ or Google Colab. No GPU needed.
 
-```bash
-pip install -r requirements.txt
-python -m spacy download en_core_web_sm
-huggingface-cli login        # read token from huggingface.co/settings/tokens
+    pip install -r requirements.txt
+    python -m spacy download en_core_web_sm
+    huggingface-cli login
 
-python labs/lab1_model_cards.py
-python labs/lab2_lineage.py
+    python labs/lab1_model_cards.py
+    python labs/lab2_lineage.py deepseek-ai/DeepSeek-R1-Distill-Llama-8B
+    python labs/lab3_openness.py
+    python labs/lab4_aibom.py --checksum
+    python labs/lab5_pii_scan.py
 
+`huggingface-cli login` asks for a read token from huggingface.co/settings/tokens. Meta's Llama repositories are gated: request access on the model page first, or the scripts will report the card as unreadable.
 
+## Repository layout
 
-labs/
-lab1_model_cards.py read card metadata, keyword-check key sections
-lab2_lineage.py trace base_model chain, compare with card text
-lab3_openness.py grade releases from yes/no evidence
-lab4_aibom.py write and validate a CycloneDX ML-BOM; verify a SHA-256
-lab5_pii_scan.py detect and redact personal data in synthetic records
-results/
-lab1_model_cards.md
-lab2_lineage.md
-lab3_openness.md
-lab4_aibom.md
-lab5_pii_scan.md
-ai-bom.json
-
-
-## Limitations
-
-- Model cards are edited over time. Results are dated and may not reproduce exactly.
-- The section checks in Lab 1 are keyword matches. They show whether a topic is mentioned, not whether it is covered properly.
-- The Lab 3 grades are only as good as their yes/no inputs, which are still being checked against sources.
-- The Lab 5 test uses three records, and the Pidgin evaluation uses ten prompts and one reviewer. They show that failures happen, not how often.
-- Nothing here is legal advice. Where a licence question comes up, it is recorded as an open question.
-
-## References
-
-Anyanwu, P. C. et al. (2026). Red-Teaming Large Language Models in Low-Resource African Languages: A Case Study of Yoruba and Nigerian Pidgin. arXiv:2610.39590.
-
-## Data
-
-These labs use public model cards and synthetic records only. No real personal data is used anywhere in this repository.
+    labs/
+      lab1_model_cards.py   read card metadata, keyword-check key sections
+      lab2_lineage.py       trace base_model chain, compare with card text
+      lab3_openness.py      grade releases from yes/no evidence
+      lab4_aibom.py         write and validate a CycloneDX ML-BOM; verify a SHA-256
+      lab5_pii_scan.py      detect and redact personal data in synthetic records
+    results/
+      lab1_model_cards.md
+      lab2_lineage.md
+      lab3_openness.md
+      lab4_aibom.md
+      lab5_pii_scan.md
+      ai-bom.json
