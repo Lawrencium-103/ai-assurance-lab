@@ -1,0 +1,93 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-31T00:00:00Z",
+    "component": {
+      "type": "application",
+      "name": "Ministry citizen helpdesk chatbot",
+      "version": "0.1"
+    }
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "model-helpdesk",
+      "name": "helpdesk-llama-8b",
+      "version": "1.0",
+      "supplier": {
+        "name": "Example Vendor Ltd"
+      },
+      "licenses": [
+        {
+          "license": {
+            "name": "Llama 3.1 Community License"
+          }
+        }
+      ],
+      "pedigree": {
+        "ancestors": [
+          {
+            "type": "machine-learning-model",
+            "name": "meta-llama/Llama-3.1-8B-Instruct",
+            "licenses": [
+              {
+                "license": {
+                  "name": "Llama 3.1 Community License"
+                }
+              }
+            ],
+            "externalReferences": [
+              {
+                "type": "website",
+                "url": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct"
+              }
+            ]
+          }
+        ]
+      },
+      "modelCard": {
+        "modelParameters": {
+          "task": "text-generation",
+          "architectureFamily": "transformer",
+          "datasets": [
+            {
+              "ref": "data-ft"
+            }
+          ]
+        },
+        "considerations": {
+          "users": [
+            "Ministry helpdesk staff",
+            "Citizens"
+          ],
+          "useCases": [
+            "Answering questions about public services"
+          ],
+          "technicalLimitations": [
+            "May give wrong answers about eligibility rules"
+          ],
+          "ethicalConsiderations": [
+            {
+              "name": "Citizen personal data in prompts",
+              "mitigationStrategy": "PII redaction before prompts leave the ministry network"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "data",
+      "bom-ref": "data-ft",
+      "name": "helpdesk-finetune-set",
+      "data": [
+        {
+          "type": "dataset",
+          "name": "Anonymised helpdesk transcripts 2025",
+          "classification": "confidential"
+        }
+      ]
+    }
+  ]
+}
